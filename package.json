@@ -8,7 +8,7 @@
     "pretest": "npm run lint",
     "test": "jest --verbose --runInBand --detectOpenHandles --passWithNoTests",
     "test:watch": "jest --watch --verbose --runInBand --detectOpenHandles",
-    "start": "webpack-dev-server --hot --mode development",
+    "start": "webpack-dev-server --hot --mode development --devtool eval-source-map",
     "build": "webpack -p"
   },
   "repository": {
@@ -47,6 +47,7 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
+    "figlet": "^1.2.1",
     "normalize.css": "^8.0.1",
     "react": "^16.8.2",
     "react-dom": "^16.8.2"
