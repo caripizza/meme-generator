@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import React, { PureComponent } from 'react';
 import figlet from 'figlet';
+import fonts from './fonts';
 
 export default class App extends PureComponent {
 
@@ -8,7 +9,8 @@ export default class App extends PureComponent {
     counter: 0,
     text: '',
     anotherText: '',
-    formattedText: ''
+    formattedText: '',
+    font: 'Weird'
   }
 
   handleClick = () => {
@@ -19,29 +21,36 @@ export default class App extends PureComponent {
   }
 
   formatText = () => {
-    const font = 'Weird';
-    figlet.text(this.state.text, { font }, (error, data) => {
+    const { text, font } = this.state;
+    figlet.text(text, font, (error, data) => {
       if(error) return console.log(error);
       this.setState({ formattedText: data });
     });
   }
 
   handleChange = ({ target }) => {
-    // console.log(target.name);
     this.setState({ [target.name]: target.value }, () => {
       this.formatText();
     });
   }
 
   render() {
-    const { text, anotherText, formattedText } = this.state;
+    const { text, anotherText, formattedText, font } = this.state;
+    const fontOptions =  fonts.map(font => {
+      return (
+        <option key={font} value={font}>{font}</option>
+      );
+    });
     return (
       < >
         <h1>Hi</h1>
-        <input type="text" name="text" value={text} onChange={this.handleChange} />
+        <select name="font" onChange={this.handleChange} value={font}>
+          {fontOptions}
+        </select>
+        {/* <input type="text" name="text" value={text} onChange={this.handleChange} /> */}
         <input type="text" name="anotherText" value={anotherText} onChange={this.handleChange} />
         <input type="text" name="text" value={text} onChange={this.handleChange} />
-        <h1>{text}</h1>
+        {/* <h1>{text}</h1> */}
         <h1>{anotherText}</h1>
         <h1><pre>{formattedText}</pre></h1>
         <button onClick={this.handleClick}>Submit</button>
@@ -49,10 +58,3 @@ export default class App extends PureComponent {
     );
   }
 }
-
-
-// function App() {
-// return (
-// <h1>Hi</h1>
-// );
-// }
