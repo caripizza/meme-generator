@@ -2,15 +2,30 @@
 import React, { PureComponent } from 'react';
 import figlet from 'figlet';
 import fonts from './fonts';
+import domtoimage from 'dom-to-image';
 
 export default class App extends PureComponent {
 
   state = {
     counter: 0,
-    text: '',
+    text: 'default',
     anotherText: '',
     formattedText: '',
-    font: 'Weird'
+    font: 'Weird',
+    img: ''
+  }
+
+  componentDidMount() {
+    this.formatText();
+  }
+
+  textToImage = (event) => {
+    event.preventDefault();
+    const image = document.getElementById('formattedText');
+    domtoimage.toPng(image)
+      .then(img => {
+        this.setState({ img });
+      });
   }
 
   handleClick = () => {
@@ -35,7 +50,7 @@ export default class App extends PureComponent {
   }
 
   render() {
-    const { text, anotherText, formattedText, font } = this.state;
+    const { text, formattedText, font, img } = this.state;
     const fontOptions =  fonts.map(font => {
       return (
         <option key={font} value={font}>{font}</option>
@@ -43,17 +58,18 @@ export default class App extends PureComponent {
     });
     return (
       < >
-        <h1>Hi</h1>
-        <select name="font" onChange={this.handleChange} value={font}>
-          {fontOptions}
-        </select>
-        {/* <input type="text" name="text" value={text} onChange={this.handleChange} /> */}
-        <input type="text" name="anotherText" value={anotherText} onChange={this.handleChange} />
-        <input type="text" name="text" value={text} onChange={this.handleChange} />
-        {/* <h1>{text}</h1> */}
-        <h1>{anotherText}</h1>
-        <h1><pre>{formattedText}</pre></h1>
-        <button onClick={this.handleClick}>Submit</button>
+        <h1>Figlet Fonts!</h1>
+        <button onClick={this.handleClick}>Click me</button>
+        <span>Clicked {this.state.counter} times</span>
+        <form onSubmit={this.textToImage}>
+          <select name="font" onChange={this.handleChange} value={font}>
+            {fontOptions}
+          </select>
+          <input type="text" name="text" value={text} onChange={this.handleChange} />
+          <button>Get Image</button>
+        </form>
+        <h1 id="formattedText"><pre>{formattedText}</pre></h1>
+        {img && <img src={img} />}
       </>
     );
   }
