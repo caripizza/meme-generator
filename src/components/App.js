@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 import figlet from 'figlet';
 import fonts from './fonts';
 import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
 
 export default class App extends PureComponent {
 
@@ -17,6 +18,10 @@ export default class App extends PureComponent {
 
   componentDidMount() {
     this.formatText();
+  }
+
+  saveFile = () => {
+    saveAs(this.state.img);
   }
 
   textToImage = (event) => {
@@ -70,6 +75,7 @@ export default class App extends PureComponent {
         </form>
         <h1 id="formattedText"><pre>{formattedText}</pre></h1>
         {img && <img src={img} />}
+        {img && <button onClick={this.saveFile}>Save file</button>}
       </>
     );
   }
