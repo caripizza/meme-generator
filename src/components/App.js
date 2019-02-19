@@ -5,11 +5,14 @@ export default class App extends PureComponent {
 
   state = {
     // hi: 'there'
-    counter: 0
+    counter: 0,
+    text: '',
+    anotherText: ''
   }
 
   handleClick = () => {
     // console.log(this.state.hi);
+
     // to start counter at 0:
     // this.setState((state) => {
     //   console.log('Clicked ' + this.state.counter + ' times');
@@ -22,11 +25,20 @@ export default class App extends PureComponent {
     });
 
   }
+  handleChange = ({ target }) => {
+    console.log(target.name);
+    this.setState({ [target.name]: target.value });
+  }
 
   render() {
+    const { text, anotherText } = this.state;
     return (
       < >
         <h1>Hi</h1>
+        <input type="text" name="text" value={text} onChange={this.handleChange} />
+        <input type="text" name="anotherText" value={anotherText} onChange={this.handleChange} />
+        <h1>{text}</h1>
+        <h1>{anotherText}</h1>
         <button onClick={this.handleClick}>Submit</button>
       </>
     );
