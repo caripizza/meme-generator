@@ -40,11 +40,11 @@ function MemeDisplay({
         onChange={handleChange}
         placeholder="enter footer text"
       />
+      {(headerText || footerText || imageUrl) && <button>Get image</button>}
       <div style={divStyles} id="meme-id">
         <h3>{headerText}</h3>
         <h3>{footerText}</h3>
       </div>
-      {headerText && <button>Get image</button>}
     </form>
     </>
   );

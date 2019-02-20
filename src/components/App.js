@@ -27,6 +27,16 @@ export default class App extends PureComponent {
       });
   }
 
+  handleUpload = ({ target }) => {
+    const successMsg = document.getElementById('success-msg');
+    this.setState({ imageUrl: window.URL.createObjectURL(target.files[0]) }, () => {
+      successMsg.textContent = 'Success!';
+      setTimeout(() => {
+        successMsg.textContent = '';
+      }, 3000);
+    });
+  }
+
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value }, () => {
       this.headerText, this.footerText, this.imageUrl;
@@ -38,6 +48,11 @@ export default class App extends PureComponent {
     return (
       < >
         <FigletApp />
+        <form onSubmit={this.memeToImage}>
+          <input type="file" name="file" accept="image/png, image/jpeg" onChange={this.handleUpload}/>
+          <p id="success-msg"></p>
+          <button>Upload</button>
+        </form>
         <MemeDisplay
           headerText={headerText}
           imageUrl={imageUrl}
