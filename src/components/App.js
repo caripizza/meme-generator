@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import React, { PureComponent } from 'react';
 import AppDemo from './AppDemo';
+import MemeDisplay from './MemeDisplay';
 // import 'normalize.css';
 
 export default class App extends PureComponent {
@@ -13,7 +14,7 @@ export default class App extends PureComponent {
 
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value }, () => {
-      this.headerText, this.footerText;
+      this.headerText, this.footerText, this.imageUrl;
     });
   }
 
@@ -22,8 +23,13 @@ export default class App extends PureComponent {
     return (
       < >
         <AppDemo />
-
-        <h1>App component</h1>
+        <MemeDisplay
+          headerText={headerText}
+          imageUrl={imageUrl}
+          footerText={footerText}
+          handleChange={this.handleChange}
+        />
+        {/* <h1>App component</h1>
         <div>
           <input type="text" name="headerText" value={headerText} onChange={this.handleChange}/>
           <input type="text" name="imageUrl" value={imageUrl} onChange={this.handleChange}/>
@@ -31,7 +37,7 @@ export default class App extends PureComponent {
           <h3>{headerText}</h3>
           <img src={imageUrl}/>
           <h3>{footerText}</h3>
-        </div>
+        </div> */}
       </>
     );
   }
