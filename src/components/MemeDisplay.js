@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './MemeDisplay.css';
 
 function MemeDisplay({
   headerText,
@@ -8,7 +7,9 @@ function MemeDisplay({
   footerText,
   handleChange,
   memeToImage,
-  fontColor
+  fontColor,
+  fontFamily,
+  fontSize
 }) {
   const divStyles = {
     textAlign: 'center',
@@ -23,9 +24,21 @@ function MemeDisplay({
       <option key={fontC} value={fontC}>{fontC}</option>
     );
   });
+  const fontFamilyList = ['Courier', 'Arial', 'Times', 'Verdana'].map(fontF => {
+    return (
+      <option key={fontF} value={fontF}>{fontF}</option>
+    );
+  });
+  const fontSizeList = ['45px', '50px', '55px', '60px'].map(fontS => {
+    return (
+      <option key={fontS} value={fontS}>{fontS}</option>
+    );
+  });
   const fontColorStyle = () => {
     return {
-      color: fontColor
+      color: fontColor,
+      fontSize: fontSize,
+      fontFamily: fontFamily
     };
   };
   return (
@@ -35,6 +48,16 @@ function MemeDisplay({
         onChange={handleChange}
       >
         {fontColorList}
+      </select>
+      <select name="fontFamily"
+        onChange={handleChange}
+      >
+        {fontFamilyList}
+      </select>
+      <select name="fontSize"
+        onChange={handleChange}
+      >
+        {fontSizeList}
       </select>
       <input type="text"
         name="headerText"
@@ -70,7 +93,9 @@ MemeDisplay.propTypes = {
   footerText: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   memeToImage: PropTypes.func.isRequired,
-  fontColor: PropTypes.string.isRequired
+  fontColor: PropTypes.string.isRequired,
+  fontFamily: PropTypes.string.isRequired,
+  fontSize: PropTypes.string.isRequired
 };
 
 export default MemeDisplay;

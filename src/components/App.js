@@ -5,7 +5,6 @@ import MemeDisplay from './MemeDisplay';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import ImageUpload from './ImageUpload';
-// import 'normalize.css';
 
 export default class App extends PureComponent {
   state = {
@@ -13,7 +12,9 @@ export default class App extends PureComponent {
     footerText: '',
     imageUrl: '',
     meme: '',
-    fontColor: 'purple'
+    fontColor: 'purple',
+    fontFamily: 'Courier',
+    fontSize: '45px'
   }
 
   saveFile = () => {
@@ -44,7 +45,7 @@ export default class App extends PureComponent {
   }
 
   render() {
-    const { headerText, footerText, imageUrl, meme, fontColor } = this.state;
+    const { headerText, footerText, imageUrl, meme, fontColor, fontFamily, fontSize } = this.state;
     return (
       < >
         <FigletApp />
@@ -61,6 +62,8 @@ export default class App extends PureComponent {
           memeToImage={this.memeToImage}
           saveFile={this.saveFile}
           fontColor={fontColor}
+          fontFamily={fontFamily}
+          fontSize={fontSize}
         />
         {meme && <button onClick={this.saveFile}>Save file</button>}
         {meme && <img src={meme}/>}
