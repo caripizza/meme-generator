@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
 import React, { PureComponent } from 'react';
-import AppDemo from './AppDemo';
+import FigletApp from './FigletApp';
 import MemeDisplay from './MemeDisplay';
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
 // import 'normalize.css';
 
 export default class App extends PureComponent {
@@ -12,6 +14,19 @@ export default class App extends PureComponent {
     meme: ''
   }
 
+  saveFile = () => {
+    saveAs(this.state.meme);
+  }
+
+  memeToImage = (event) => {
+    event.preventDefault();
+    const createdMeme = document.getElementById('meme-id');
+    domtoimage.toPng(createdMeme)
+      .then(meme => {
+        this.setState({ meme });
+      });
+  }
+
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value }, () => {
       this.headerText, this.footerText, this.imageUrl;
@@ -19,25 +34,20 @@ export default class App extends PureComponent {
   }
 
   render() {
-    const { headerText, footerText, imageUrl } = this.state;
+    const { headerText, footerText, imageUrl, meme } = this.state;
     return (
       < >
-        <AppDemo />
+        <FigletApp />
         <MemeDisplay
           headerText={headerText}
           imageUrl={imageUrl}
           footerText={footerText}
           handleChange={this.handleChange}
+          memeToImage={this.memeToImage}
+          saveFile={this.saveFile}
         />
-        {/* <h1>App component</h1>
-        <div>
-          <input type="text" name="headerText" value={headerText} onChange={this.handleChange}/>
-          <input type="text" name="imageUrl" value={imageUrl} onChange={this.handleChange}/>
-          <input type="text" name="footerText" value={footerText} onChange={this.handleChange}/>
-          <h3>{headerText}</h3>
-          <img src={imageUrl}/>
-          <h3>{footerText}</h3>
-        </div> */}
+        {meme && <img src={meme}/>}
+        {meme && <button onClick={this.saveFile}>Save file</button>}
       </>
     );
   }

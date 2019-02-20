@@ -64,13 +64,20 @@ export default class AppDemo extends PureComponent {
     return (
       < >
         <h1>Figlet Fonts!</h1>
-        <button onClick={this.handleClick}>Click me</button>
-        <span>Clicked {this.state.counter} times</span>
+        {/* <button onClick={this.handleClick}>Click me</button> */}
+        {/* <span>Clicked {this.state.counter} times</span> */}
         <form onSubmit={this.textToImage}>
-          <select name="font" onChange={this.handleChange} value={font}>
+          <select name="font"
+            onChange={this.handleChange}
+            value={font}
+          >
             {fontOptions}
           </select>
-          <input type="text" name="text" value={text} onChange={this.handleChange} />
+          <input type="text"
+            name="text"
+            value={text}
+            onChange={this.handleChange}
+          />
           <button>Get Image</button>
         </form>
         <h1 id="formattedText"><pre>{formattedText}</pre></h1>
