@@ -1,3 +1,16 @@
 :global(body) {
   margin: 0px;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  form {
+    padding: 5px;
+    input, select {
+      margin: 5px;
+    }
+    fieldset {
+      display: inline-flex;
+      border: 3px solid transparent;
+    }
+  }
 }

@@ -5,14 +5,13 @@ function ImageUpload({ memeToImage, handleUpload }) {
   return (
     < >
       <form onSubmit={memeToImage}>
-        <p>Upload your own image:</p>
+        <span>Upload your own image:</span>
         <input type="file"
           name="file"
           accept="image/png, image/jpeg"
           onChange={handleUpload}
         />
         <span id="success-msg"></span>
-        <button>Upload</button>
       </form>
     </>
   );

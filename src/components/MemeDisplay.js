@@ -44,39 +44,65 @@ function MemeDisplay({
   return (
     < >
     <form onSubmit={memeToImage}>
-      <select name="fontColor"
-        onChange={handleChange}
-      >
-        {fontColorList}
-      </select>
-      <select name="fontFamily"
-        onChange={handleChange}
-      >
-        {fontFamilyList}
-      </select>
-      <select name="fontSize"
-        onChange={handleChange}
-      >
-        {fontSizeList}
-      </select>
-      <input type="text"
-        name="headerText"
-        value={headerText}
-        onChange={handleChange}
-        placeholder="enter heading text"
-      />
-      <input type="text"
-        name="imageUrl"
-        value={imageUrl}
-        onChange={handleChange}
-        placeholder="http://image-link.com"
-      />
-      <input type="text"
-        name="footerText"
-        value={footerText}
-        onChange={handleChange}
-        placeholder="enter footer text"
-      />
+      <fieldset>
+        <label>
+      Choose a font color:<br/>
+          <select name="fontColor"
+            onChange={handleChange}
+          >
+            {fontColorList}
+          </select>
+        </label>
+        <br/>
+        <label>
+        Choose a font family:<br/>
+          <select name="fontFamily"
+            onChange={handleChange}
+          >
+            {fontFamilyList}
+          </select>
+        </label>
+        <br/>
+        <label>
+        Choose a font size:<br/>
+          <select name="fontSize"
+            onChange={handleChange}
+          >
+            {fontSizeList}
+          </select>
+        </label>
+      </fieldset>
+      <fieldset>
+        <label>
+        Enter header text:<br/>
+          <input type="text"
+            name="headerText"
+            value={headerText}
+            onChange={handleChange}
+            placeholder="enter heading text"
+          />
+        </label>
+        <br/>
+        <label>
+        Enter image url (http only):<br/>
+          <input type="text"
+            name="imageUrl"
+            value={imageUrl}
+            onChange={handleChange}
+            placeholder="http://image-link.com"
+          />
+        </label>
+        <br/>
+        <label>
+        Enter footer text:<br/>
+          <input type="text"
+            name="footerText"
+            value={footerText}
+            onChange={handleChange}
+            placeholder="enter footer text"
+          />
+        </label>
+      </fieldset>
       {(headerText || footerText || imageUrl) && <button>Get image</button>}
       <div style={divStyles} id="meme-id">
         <h3 style={fontColorStyle()}>{headerText}</h3>
