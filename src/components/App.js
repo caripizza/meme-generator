@@ -4,6 +4,7 @@ import FigletApp from './FigletApp';
 import MemeDisplay from './MemeDisplay';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
+import ImageUpload from './ImageUpload';
 // import 'normalize.css';
 
 export default class App extends PureComponent {
@@ -48,11 +49,16 @@ export default class App extends PureComponent {
     return (
       < >
         <FigletApp />
-        <form onSubmit={this.memeToImage}>
+        {/* <form onSubmit={this.memeToImage}>
           <input type="file" name="file" accept="image/png, image/jpeg" onChange={this.handleUpload}/>
           <p id="success-msg"></p>
           <button>Upload</button>
-        </form>
+        </form> */}
+        <h1>Meme Generator!</h1>
+        <ImageUpload
+          memeToImage={this.memeToImage}
+          handleUpload={this.handleUpload}
+        />
         <MemeDisplay
           headerText={headerText}
           imageUrl={imageUrl}
@@ -61,8 +67,8 @@ export default class App extends PureComponent {
           memeToImage={this.memeToImage}
           saveFile={this.saveFile}
         />
-        {meme && <img src={meme}/>}
         {meme && <button onClick={this.saveFile}>Save file</button>}
+        {meme && <img src={meme}/>}
       </>
     );
   }

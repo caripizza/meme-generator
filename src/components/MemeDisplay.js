@@ -7,8 +7,7 @@ function MemeDisplay({
   imageUrl,
   footerText,
   handleChange,
-  memeToImage,
-  // saveFile
+  memeToImage
 }) {
   const divStyles = {
     textAlign: 'center',
@@ -20,7 +19,6 @@ function MemeDisplay({
   };
   return (
     < >
-    <h1>Meme Generator</h1>
     <form onSubmit={memeToImage}>
       <input type="text"
         name="headerText"
@@ -55,8 +53,7 @@ MemeDisplay.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   footerText: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
-  memeToImage: PropTypes.func.isRequired,
-  // saveFile: PropTypes.func.isRequired
+  memeToImage: PropTypes.func.isRequired
 };
 
 export default MemeDisplay;
