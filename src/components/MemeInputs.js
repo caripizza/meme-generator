@@ -20,13 +20,20 @@ function MemeInputs({
       </label>
       <br/>
       <label>
-        Enter image url (http only):<br/>
+        Enter image url:<br/>
         <input type="text"
           name="imageUrl"
           value={imageUrl}
           onChange={handleChange}
           placeholder="http://image-link.com"
         />
+        <span>
+          <a rel="noopener noreferrer" target="_blank"
+            href="https://www.google.com/search?q=image+puppy&tbs=sur:f,isz:l&tbm=isch&source=lnt&sa=X&ved=0ahUKEwi2hJX50crgAhWSlp4KHfVQCb4QpwUIHw&biw=1440&bih=749&dpr=1#imgrc=_"
+          >
+            Image examples
+          </a>
+        </span>
       </label>
       <br/>
       <label>
