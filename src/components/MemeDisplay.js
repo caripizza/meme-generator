@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MemeInputs from './MemeInputs';
+import MemeFonts from './MemeFonts';
 
 function MemeDisplay({
   headerText,
@@ -20,21 +21,21 @@ function MemeDisplay({
     height: '300px',
     backgroundPosition: 'center'
   };
-  const fontColorList = ['purple', 'yellow', 'aqua'].map(fontC => {
-    return (
-      <option key={fontC} value={fontC}>{fontC}</option>
-    );
-  });
-  const fontFamilyList = ['Courier', 'Arial', 'Times', 'Verdana'].map(fontF => {
-    return (
-      <option key={fontF} value={fontF}>{fontF}</option>
-    );
-  });
-  const fontSizeList = ['45px', '50px', '55px', '60px'].map(fontS => {
-    return (
-      <option key={fontS} value={fontS}>{fontS}</option>
-    );
-  });
+  // const fontColorList = ['purple', 'yellow', 'aqua'].map(fontC => {
+  //   return (
+  //     <option key={fontC} value={fontC}>{fontC}</option>
+  //   );
+  // });
+  // const fontFamilyList = ['Courier', 'Arial', 'Times', 'Verdana'].map(fontF => {
+  //   return (
+  //     <option key={fontF} value={fontF}>{fontF}</option>
+  //   );
+  // });
+  // const fontSizeList = ['45px', '50px', '55px', '60px'].map(fontS => {
+  //   return (
+  //     <option key={fontS} value={fontS}>{fontS}</option>
+  //   );
+  // });
   const fontColorStyle = () => {
     return {
       color: fontColor,
@@ -45,7 +46,8 @@ function MemeDisplay({
   return (
     < >
     <form onSubmit={memeToImage}>
-      <fieldset>
+      <MemeFonts handleChange={handleChange}/>
+      {/* <fieldset>
         <label>
       Choose a font color:<br/>
           <select name="fontColor"
@@ -72,7 +74,7 @@ function MemeDisplay({
             {fontSizeList}
           </select>
         </label>
-      </fieldset>
+      </fieldset> */}
       <MemeInputs headerText={headerText}
         imageUrl={imageUrl}
         footerText={footerText}
