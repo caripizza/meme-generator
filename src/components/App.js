@@ -5,6 +5,9 @@ import MemeDisplay from './MemeDisplay';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import ImageUpload from './ImageUpload';
+import Header from './Header';
+import Footer from './Footer';
+import './App.css';
 
 export default class App extends PureComponent {
   state = {
@@ -45,9 +48,12 @@ export default class App extends PureComponent {
   }
 
   render() {
+    const title = 'Cari\'s Meme & Font Generator App';
+    const name = '© Cari Palazzolo 2019';
     const { headerText, footerText, imageUrl, meme, fontColor, fontFamily, fontSize } = this.state;
     return (
       < >
+        <Header title={title}/>
         <FigletApp />
         <h1>Meme Generator!</h1>
         <ImageUpload
@@ -67,6 +73,7 @@ export default class App extends PureComponent {
         />
         {meme && <button onClick={this.saveFile}>Save file</button>}
         {meme && <img src={meme}/>}
+        <Footer name={name} />
       </>
     );
   }

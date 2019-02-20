@@ -1,0 +1,13 @@
+.footer {
+  background: red;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  margin: -8px;
+  p {
+    color: green;
+    margin: 0px;
+    padding: 10px;
+  }
+}

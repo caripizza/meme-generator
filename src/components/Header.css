@@ -1,0 +1,18 @@
+.header {
+  background-color: cyan;
+  font-weight: bold;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  margin: -8px;
+  h1 {
+    color: red;
+    background: yellow;
+    font-style: italic;
+  }
+  img {
+    width: 100px;;
+    padding-top: 20px;
+  }
+}
