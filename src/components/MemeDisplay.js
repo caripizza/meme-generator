@@ -7,7 +7,8 @@ function MemeDisplay({
   imageUrl,
   footerText,
   handleChange,
-  memeToImage
+  memeToImage,
+  fontColor
 }) {
   const divStyles = {
     textAlign: 'center',
@@ -17,9 +18,24 @@ function MemeDisplay({
     height: '300px',
     backgroundPosition: 'center'
   };
+  const fontColorList = ['purple', 'yellow', 'aqua'].map(fontC => {
+    return (
+      <option key={fontC} value={fontC}>{fontC}</option>
+    );
+  });
+  const fontColorStyle = () => {
+    return {
+      color: fontColor
+    };
+  };
   return (
     < >
     <form onSubmit={memeToImage}>
+      <select name="fontColor"
+        onChange={handleChange}
+      >
+        {fontColorList}
+      </select>
       <input type="text"
         name="headerText"
         value={headerText}
@@ -40,8 +56,8 @@ function MemeDisplay({
       />
       {(headerText || footerText || imageUrl) && <button>Get image</button>}
       <div style={divStyles} id="meme-id">
-        <h3>{headerText}</h3>
-        <h3>{footerText}</h3>
+        <h3 style={fontColorStyle()}>{headerText}</h3>
+        <h3 style={fontColorStyle()}>{footerText}</h3>
       </div>
     </form>
     </>
@@ -53,7 +69,8 @@ MemeDisplay.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   footerText: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
-  memeToImage: PropTypes.func.isRequired
+  memeToImage: PropTypes.func.isRequired,
+  fontColor: PropTypes.string.isRequired
 };
 
 export default MemeDisplay;

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { PureComponent } from 'react';
 import figlet from 'figlet';
-import fonts from './fonts';
+import fonts from '../assets/fonts';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 
@@ -64,8 +64,6 @@ export default class AppDemo extends PureComponent {
     return (
       < >
         <h1>Figlet Fonts!</h1>
-        {/* <button onClick={this.handleClick}>Click me</button> */}
-        {/* <span>Clicked {this.state.counter} times</span> */}
         <form onSubmit={this.textToImage}>
           <select name="font"
             onChange={this.handleChange}

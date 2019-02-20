@@ -11,7 +11,7 @@ function ImageUpload({ memeToImage, handleUpload }) {
           accept="image/png, image/jpeg"
           onChange={handleUpload}
         />
-        <p id="success-msg"></p>
+        <span id="success-msg"></span>
         <button>Upload</button>
       </form>
     </>

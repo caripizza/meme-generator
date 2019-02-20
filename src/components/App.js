@@ -12,7 +12,8 @@ export default class App extends PureComponent {
     headerText: '',
     footerText: '',
     imageUrl: '',
-    meme: ''
+    meme: '',
+    fontColor: 'purple'
   }
 
   saveFile = () => {
@@ -39,21 +40,14 @@ export default class App extends PureComponent {
   }
 
   handleChange = ({ target }) => {
-    this.setState({ [target.name]: target.value }, () => {
-      this.headerText, this.footerText, this.imageUrl;
-    });
+    this.setState({ [target.name]: target.value });
   }
 
   render() {
-    const { headerText, footerText, imageUrl, meme } = this.state;
+    const { headerText, footerText, imageUrl, meme, fontColor } = this.state;
     return (
       < >
         <FigletApp />
-        {/* <form onSubmit={this.memeToImage}>
-          <input type="file" name="file" accept="image/png, image/jpeg" onChange={this.handleUpload}/>
-          <p id="success-msg"></p>
-          <button>Upload</button>
-        </form> */}
         <h1>Meme Generator!</h1>
         <ImageUpload
           memeToImage={this.memeToImage}
@@ -66,6 +60,7 @@ export default class App extends PureComponent {
           handleChange={this.handleChange}
           memeToImage={this.memeToImage}
           saveFile={this.saveFile}
+          fontColor={fontColor}
         />
         {meme && <button onClick={this.saveFile}>Save file</button>}
         {meme && <img src={meme}/>}
