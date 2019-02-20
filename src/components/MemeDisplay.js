@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import MemeInputs from './MemeInputs';
 
 function MemeDisplay({
   headerText,
@@ -72,7 +73,12 @@ function MemeDisplay({
           </select>
         </label>
       </fieldset>
-      <fieldset>
+      <MemeInputs headerText={headerText}
+        imageUrl={imageUrl}
+        footerText={footerText}
+        handleChange={handleChange}
+      />
+      {/* <fieldset>
         <label>
         Enter header text:<br/>
           <input type="text"
@@ -102,7 +108,7 @@ function MemeDisplay({
             placeholder="enter footer text"
           />
         </label>
-      </fieldset>
+      </fieldset> */}
       {(headerText || footerText || imageUrl) && <button>Get image</button>}
       <div style={divStyles} id="meme-id">
         <h3 style={fontColorStyle()}>{headerText}</h3>
