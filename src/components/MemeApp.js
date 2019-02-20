@@ -1,47 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MemeInputs from './MemeInputs';
-import MemeFonts from './MemeFonts';
-import MemeImgText from './MemeImgText';
+import ImageUpload from './ImageUpload';
+import MemeDisplay from './MemeDisplay';
 
-function MemeDisplay({
+function MemeApp({
   headerText,
   imageUrl,
   footerText,
   handleChange,
+  handleUpload,
   memeToImage,
   fontColor,
   fontFamily,
   fontSize
 }) {
   return (
-    <form onSubmit={memeToImage}>
-      <MemeFonts handleChange={handleChange}/>
-      <MemeInputs headerText={headerText}
+    < >
+      <h1>Meme Generator!</h1>
+      <ImageUpload
+        memeToImage={memeToImage}
+        handleUpload={handleUpload}
+      />
+      <MemeDisplay
+        headerText={headerText}
         imageUrl={imageUrl}
         footerText={footerText}
         handleChange={handleChange}
-      />
-      <MemeImgText headerText={headerText}
-        imageUrl={imageUrl}
-        footerText={footerText}
+        memeToImage={memeToImage}
         fontColor={fontColor}
-        fontSize={fontSize}
         fontFamily={fontFamily}
+        fontSize={fontSize}
       />
-    </form>
+    </>
   );
 }
 
-MemeDisplay.propTypes = {
+MemeApp.propTypes = {
   headerText: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   footerText: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
+  handleUpload: PropTypes.func.isRequired,
   memeToImage: PropTypes.func.isRequired,
   fontColor: PropTypes.string.isRequired,
   fontFamily: PropTypes.string.isRequired,
   fontSize: PropTypes.string.isRequired
 };
 
-export default MemeDisplay;
+export default MemeApp;

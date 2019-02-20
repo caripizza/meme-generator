@@ -5,7 +5,7 @@ import fonts from '../assets/fonts';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 
-export default class AppDemo extends PureComponent {
+export default class FigletApp extends PureComponent {
 
   state = {
     counter: 0,
