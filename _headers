@@ -1,0 +1,6 @@
+# Custom Netlify Headers
+
+/assets/fonts/*.flf
+  Access-Control-Allow-Origin: *
+  Content-Type: application/font-flf
+
